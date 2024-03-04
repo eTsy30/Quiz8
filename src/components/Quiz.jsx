@@ -1,8 +1,10 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { quiz } from '../../quiz'
 import styles from '../components/style.module.scss'
 import { Result } from './Result'
 
+import correctSound from '../assets/correct.mp3'
+import incorrectSound from '../assets/incorrect.mp3'
 export const Quiz = () => {
   const [activeQuestion, setActiveQuestion] = useState(0)
   const [selectedAnswer, setSelectedAnswer] = useState('')
@@ -16,26 +18,29 @@ export const Quiz = () => {
   })
   const [name, setName] = useState('')
 
+  const correctAudioRef = useRef(null)
+  const incorrectAudioRef = useRef(null)
+  const [isPlaying, setIsPlaying] = useState(false)
   const { questions } = quiz
-  const { question, choices, correctAnswer } = questions[activeQuestion]
+  const { question, choices, correctAnswer, img } = questions[activeQuestion]
 
   const onClickNext = () => {
     setSelectedAnswerIndex(null)
-    setResult((prev) =>
-      selectedAnswer
-        ? {
-            ...prev,
-            score: prev.score + 5,
-            correctAnswers: prev.correctAnswers + 1,
-          }
-        : { ...prev, wrongAnswers: prev.wrongAnswers + 1 }
-    )
-    if (activeQuestion !== questions.length - 1) {
-      setActiveQuestion((prev) => prev + 1)
+    if (selectedAnswer) {
+      setResult((prev) => ({
+        ...prev,
+        score: prev.score + 5,
+        correctAnswers: prev.correctAnswers + 1,
+      }))
+      correctAudioRef.current.play()
     } else {
-      setActiveQuestion(0)
-      setShowResult(true)
+      setResult((prev) => ({
+        ...prev,
+        wrongAnswers: prev.wrongAnswers + 1,
+      }))
+      incorrectAudioRef.current.play()
     }
+    setIsPlaying(true)
   }
 
   const onAnswerSelected = (answer, index) => {
@@ -49,7 +54,17 @@ export const Quiz = () => {
       setResult((prevResult) => ({ ...prevResult, name: name }))
     }
   }
-  console.log(result)
+
+  const handleAudioEnded = () => {
+    setIsPlaying(false)
+    if (activeQuestion !== questions.length - 1) {
+      setActiveQuestion((prev) => prev + 1)
+    } else {
+      setActiveQuestion(0)
+      setShowResult(true)
+    }
+  }
+
   return (
     <div className={styles['quiz-container']}>
       {result.name === '' ? (
@@ -77,6 +92,7 @@ export const Quiz = () => {
             </span>
           </div>
           <h2>{question}</h2>
+          <img className={styles['image']} src={img} alt="" />
           <ul>
             {choices &&
               choices.map((answer, index) => (
@@ -96,7 +112,7 @@ export const Quiz = () => {
           <div className={styles['flex-right']}>
             <button
               onClick={onClickNext}
-              disabled={selectedAnswerIndex === null}
+              disabled={selectedAnswerIndex === null || isPlaying}
             >
               {activeQuestion === questions.length - 1 ? 'Конец' : 'next'}
             </button>
@@ -105,6 +121,16 @@ export const Quiz = () => {
       ) : (
         <Result questions={questions} result={result} />
       )}
+      <audio
+        ref={correctAudioRef}
+        src={correctSound}
+        onEnded={handleAudioEnded}
+      />
+      <audio
+        ref={incorrectAudioRef}
+        src={incorrectSound}
+        onEnded={handleAudioEnded}
+      />
     </div>
   )
 }

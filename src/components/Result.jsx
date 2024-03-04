@@ -1,6 +1,5 @@
 /* eslint-disable react/prop-types */
 // eslint-disable-next-line react/prop-types
-import '../components/style.css'
 export const Result = ({ questions, result }) => {
   return (
     <div className="result">

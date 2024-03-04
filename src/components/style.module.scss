@@ -9,6 +9,10 @@ body {
   margin: 0;
   padding: 0 30px;
 }
+.image {
+  width: 75%;
+}
+
 .name-container {
   display: flex;
   gap: 10px;
@@ -29,7 +33,6 @@ body {
   max-width: 500px;
   background: #ffffff;
   border-radius: 4px;
-  margin-top: 100px;
   padding: 30px 60px;
 }
 
