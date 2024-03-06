@@ -133,7 +133,7 @@ export const quiz = {
       question: 'Угадайте песню по эмодзи',
       img: 'https://n1s1.hsmedia.ru/10/ed/8c/10ed8c05e8415c9a8046eade13445026/620x465_1_71b367543bceb4c916c4d7c030205f9a@1280x961_0xac120004_4557031541685378407.jpeg',
       choices: [],
-      correctAnswer: 'Mиллион алых роз',
+      correctAnswer: 'Миллион алых роз',
     },
     {
       question: 'Угадайте песню по эмодзи',
