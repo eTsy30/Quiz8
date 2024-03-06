@@ -10,6 +10,7 @@ export const Quiz = () => {
   const [selectedAnswer, setSelectedAnswer] = useState('')
   const [showResult, setShowResult] = useState(false)
   const [selectedAnswerIndex, setSelectedAnswerIndex] = useState(null)
+  const [answer, setAnswer] = useState('')
   const [result, setResult] = useState({
     score: 0,
     correctAnswers: 0,
@@ -22,25 +23,46 @@ export const Quiz = () => {
   const incorrectAudioRef = useRef(null)
   const [isPlaying, setIsPlaying] = useState(false)
   const { questions } = quiz
-  const { question, choices, correctAnswer, img } = questions[activeQuestion]
+  const { question, choices, correctAnswer, img, type } =
+    questions[activeQuestion]
 
   const onClickNext = () => {
-    setSelectedAnswerIndex(null)
-    if (selectedAnswer) {
-      setResult((prev) => ({
-        ...prev,
-        score: prev.score + 5,
-        correctAnswers: prev.correctAnswers + 1,
-      }))
-      correctAudioRef.current.play()
+    if (!type) {
+      if (answer.toLowerCase() === correctAnswer.toLowerCase()) {
+        setResult((prev) => ({
+          ...prev,
+          score: prev.score + 5,
+          correctAnswers: prev.correctAnswers + 1,
+        }))
+
+        correctAudioRef.current.play()
+      } else {
+        setResult((prev) => ({
+          ...prev,
+          wrongAnswers: prev.wrongAnswers + 1,
+        }))
+        incorrectAudioRef.current.play()
+      }
+      setIsPlaying(true)
     } else {
-      setResult((prev) => ({
-        ...prev,
-        wrongAnswers: prev.wrongAnswers + 1,
-      }))
-      incorrectAudioRef.current.play()
+      if (selectedAnswer) {
+        setResult((prev) => ({
+          ...prev,
+          score: prev.score + 5,
+          correctAnswers: prev.correctAnswers + 1,
+        }))
+        correctAudioRef.current.play()
+      } else {
+        setResult((prev) => ({
+          ...prev,
+          wrongAnswers: prev.wrongAnswers + 1,
+        }))
+        incorrectAudioRef.current.play()
+      }
+      setIsPlaying(true)
     }
-    setIsPlaying(true)
+    setAnswer('')
+    setSelectedAnswerIndex(null)
   }
 
   const onAnswerSelected = (answer, index) => {
@@ -93,28 +115,48 @@ export const Quiz = () => {
           </div>
           <h2>{question}</h2>
           <img className={styles['image']} src={img} alt="" />
-          <ul>
-            {choices &&
-              choices.map((answer, index) => (
-                <li
-                  onClick={() => onAnswerSelected(answer, index)}
-                  key={answer}
-                  className={
-                    selectedAnswerIndex === index
-                      ? styles['selected-answer']
-                      : ''
-                  }
-                >
-                  {answer}
-                </li>
-              ))}
-          </ul>
+          {type ? (
+            <ul>
+              {choices &&
+                choices.map((answer, index) => (
+                  <li
+                    onClick={() => onAnswerSelected(answer, index)}
+                    key={answer}
+                    className={
+                      selectedAnswerIndex === index
+                        ? styles['selected-answer']
+                        : isPlaying && answer === correctAnswer
+                        ? styles['correct-answer']
+                        : ''
+                    }
+                  >
+                    {answer}
+                  </li>
+                ))}
+            </ul>
+          ) : (
+            <>
+              {isPlaying && <h5>Верный ответ: {correctAnswer}</h5>}
+              <input
+                className={styles['input']}
+                type="text"
+                placeholder="Введите ответ"
+                value={answer}
+                onChange={(e) => setAnswer(e.target.value)}
+              />
+            </>
+          )}
+
           <div className={styles['flex-right']}>
             <button
               onClick={onClickNext}
-              disabled={selectedAnswerIndex === null || isPlaying}
+              disabled={
+                !type
+                  ? answer === ''
+                  : selectedAnswerIndex === null || isPlaying
+              }
             >
-              {activeQuestion === questions.length - 1 ? 'Конец' : 'next'}
+              {activeQuestion === questions.length - 1 ? 'Конец' : 'Ответить'}
             </button>
           </div>
         </div>

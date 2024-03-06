@@ -1,9 +1,6 @@
 export const quiz = {
-  topic: 'Javascript',
-  level: 'Beginner',
-  totalQuestions: 10,
+  totalQuestions: 20,
   perQuestionScore: 5,
-  totalTime: 60, // in seconds
   questions: [
     {
       question: 'Угадайте песню по картинкам',
@@ -15,6 +12,7 @@ export const quiz = {
         'Скриптонит, Niman — «Поворот»',
       ],
       correctAnswer: 'Максим Леонидов — «Я оглянулся посмотреть»',
+      type: 'chooce',
     },
     {
       question: 'Угадайте песню по картинкам',
@@ -25,7 +23,8 @@ export const quiz = {
         'Алла Пугачева — «Айсберг»',
         'Линда — «Северный ветер»',
       ],
-      correctAnswer: 'Алла Пугачева — «Айсберг',
+      correctAnswer: 'Алла Пугачева — «Айсберг»',
+      type: 'chooce',
     },
     {
       question: 'Угадайте песню по картинкам',
@@ -37,6 +36,7 @@ export const quiz = {
         'Смысловые галлюцинации — «Первый день осени»',
       ],
       correctAnswer: 'ДДТ — «Осень»',
+      type: 'chooce',
     },
     {
       question: 'Угадайте песню по картинкам',
@@ -48,6 +48,7 @@ export const quiz = {
         'Джонибой - Когда мы взлетаем',
       ],
       correctAnswer: 'Братья Грим - Ресницы',
+      type: 'chooce',
     },
     {
       question: 'Угадайте песню по картинкам',
@@ -59,6 +60,7 @@ export const quiz = {
         'Звери - Районы-кварталы',
       ],
       correctAnswer: 'Звери - Районы-кварталы',
+      type: 'chooce',
     },
     {
       question: 'Угадайте песню по картинкам',
@@ -70,6 +72,7 @@ export const quiz = {
         'Нервы - Мокрый асфальт',
       ],
       correctAnswer: 'Би-2 - Скользкие улицы',
+      type: 'chooce',
     },
     {
       question: 'Угадайте песню по картинкам',
@@ -81,6 +84,7 @@ export const quiz = {
         'Звери - Пингвины',
       ],
       correctAnswer: 'Земфира — Ариведерчи',
+      type: 'chooce',
     },
     {
       question: 'Угадайте песню по картинкам',
@@ -92,6 +96,7 @@ export const quiz = {
         'Катя Лель - Огоньки',
       ],
       correctAnswer: 'Фабрика - Зажигают огоньки',
+      type: 'chooce',
     },
     {
       question: 'Угадайте песню по картинкам',
@@ -103,6 +108,7 @@ export const quiz = {
         'МакSим - Лучшая Ночь',
       ],
       correctAnswer: 'Город 312 - Останусь',
+      type: 'chooce',
     },
     {
       question: 'Угадайте песню по картинкам',
@@ -114,6 +120,72 @@ export const quiz = {
         'Николай Трубач и Борис Моисеев - Голубая Луна',
       ],
       correctAnswer: 'Корни - Ты узнаешь её',
+      type: 'chooce',
+    },
+    {
+      question: 'Угадайте песню по эмодзи',
+      img: 'https://n1s1.hsmedia.ru/25/4c/12/254c12c374606a8ea6c66816912bb5f5/396x347_0xac120003_170442271585828629.jpg',
+      choices: [],
+      correctAnswer: 'Аргентина-Ямайка',
+    },
+
+    {
+      question: 'Угадайте песню по эмодзи',
+      img: 'https://n1s1.hsmedia.ru/10/ed/8c/10ed8c05e8415c9a8046eade13445026/620x465_1_71b367543bceb4c916c4d7c030205f9a@1280x961_0xac120004_4557031541685378407.jpeg',
+      choices: [],
+      correctAnswer: 'Mиллион алых роз',
+    },
+    {
+      question: 'Угадайте песню по эмодзи',
+      img: 'https://n1s1.hsmedia.ru/b4/5f/47/b45f47816f0dffb29362540751a01d39/618x540_1_a6d29222190270df8c0d5ed1862d1d01@635x555_0xac120003_9602786031586362769.jpg',
+      choices: [],
+      correctAnswer: 'Зеленоглазое такси',
+    },
+    {
+      question: 'Угадайте песню по эмодзи',
+      img: 'https://n1s1.hsmedia.ru/e0/b1/61/e0b161b85f0a3a18a907836c31a79f8e/251x220_0xac120003_18937447761587652327.jpg',
+      choices: [],
+      correctAnswer: 'Выхода нет',
+    },
+
+    {
+      question: 'Угадайте песню по эмодзи',
+      img: 'https://n1s1.hsmedia.ru/d5/84/e9/d584e9472429725d6389ff8f06f20ff8/250x218_0xac120003_3645267761587650144.jpg',
+      choices: [],
+      correctAnswer: 'Хочешь',
+    },
+    {
+      question: 'Угадайте песню по эмодзи',
+      img: 'https://n1s1.hsmedia.ru/47/f2/b4/47f2b47274c1c409686ad3130401b658/233x204_0xac120003_20589221741587649928.jpg',
+      choices: [],
+      correctAnswer: 'Экспонат',
+    },
+    {
+      question: 'Угадайте песню по эмодзи',
+      img: 'https://n1s1.hsmedia.ru/63/0c/42/630c424693a3c2d4d5c91aed3ed93b8f/620x465_1_b57cebd123f466f91ffacacd1c2b4fa4@1280x961_0xac120004_9719065971685378366.jpeg',
+      choices: [],
+      correctAnswer: 'Зимняя вишня',
+    },
+
+    {
+      question: 'Угадайте песню по эмодзи',
+      img: 'https://n1s1.hsmedia.ru/32/81/4d/32814d638049f177f881f3c4475e668e/449x392_0xac120003_18416425141587652040.jpg',
+      choices: [],
+      correctAnswer: 'О, Боже, какой мужчина',
+    },
+
+    {
+      question: 'Угадайте песню по эмодзи',
+      img: 'https://n1s1.hsmedia.ru/a3/1a/87/a31a87d0904b14e7352cd832c8098112/553x484_0xac120003_19671877781587649521.jpg',
+      choices: [],
+      correctAnswer: 'Невеста',
+    },
+
+    {
+      question: 'Угадайте песню по эмодзи',
+      img: 'https://n1s2.hsmedia.ru/21/08/bf/2108bf68192ccb2f3d496d11000f3116/620x465_1_b417c67fead54cc8a77ac91e524457ea@1280x961_0xac120004_9676178481685378310.jpeg',
+      choices: [],
+      correctAnswer: 'Прованс',
     },
   ],
 }

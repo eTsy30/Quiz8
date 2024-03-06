@@ -12,13 +12,23 @@ body {
 .image {
   width: 75%;
 }
-
+h5 {
+  font-size: 20px;
+  font-weight: 500;
+  color: #800080;
+}
 .name-container {
   display: flex;
   gap: 10px;
   flex-direction: column;
 }
+.quiz-container .correct-answer {
+  border: 1px solid greenyellow !important;
+  background-color: green;
+  color: white;
+}
 .input {
+  width: 100%;
   text-decoration: none;
   list-style: none;
   color: #2d264b;
