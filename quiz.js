@@ -1,6 +1,6 @@
 export const quiz = {
   totalQuestions: 20,
-  perQuestionScore: 5,
+  perQuestionScore: 200,
   questions: [
     {
       question: 'Угадайте песню по картинкам',
