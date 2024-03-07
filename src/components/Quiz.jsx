@@ -31,7 +31,7 @@ export const Quiz = () => {
       if (answer.toLowerCase() === correctAnswer.toLowerCase()) {
         setResult((prev) => ({
           ...prev,
-          score: prev.score + 5,
+          score: prev.score + 200,
           correctAnswers: prev.correctAnswers + 1,
         }))
 
@@ -48,7 +48,7 @@ export const Quiz = () => {
       if (selectedAnswer) {
         setResult((prev) => ({
           ...prev,
-          score: prev.score + 5,
+          score: prev.score + 200,
           correctAnswers: prev.correctAnswers + 1,
         }))
         correctAudioRef.current.play()
