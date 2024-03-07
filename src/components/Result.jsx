@@ -19,6 +19,16 @@ export const Result = ({ questions, result }) => {
       <p>
         Неправильные ответы:<span> {result?.wrongAnswers}</span>
       </p>
+      <h3>За вы игранные балы вы можете купить :</h3>
+      <ul>
+        <li>Подарочная карта Золотое яблоко</li>{' '}
+        <li>Подарочная карта Иль де ботэ</li>
+        <li>Подписка Telegram</li>
+        <li>Подписка Okko</li>
+        <li>Подписка Яндекс</li>
+        <li>Подписка IVI</li>
+        <li>Взять деньгами </li>
+      </ul>
     </div>
   )
 }
